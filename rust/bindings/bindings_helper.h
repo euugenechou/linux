@@ -6,17 +6,35 @@
  * Sorted alphabetically.
  */
 
+#include <crypto/aead.h>
+#include <crypto/authenc.h>
+#include <crypto/hash.h>
+#include <crypto/md5.h>
+#include <crypto/skcipher.h>
+#include <crypto/utils.h>
+#include <keys/encrypted-type.h>
+#include <keys/trusted-type.h>
+#include <keys/user-type.h>
 #include <kunit/test.h>
-#include <linux/blk_types.h>
+#include <linux/bio.h>
 #include <linux/blk-mq.h>
+#include <linux/blk_types.h>
 #include <linux/blkdev.h>
+#include <linux/crypto.h>
+#include <linux/dax.h>
+#include <linux/device-mapper.h>
+#include <linux/dm-io.h>
 #include <linux/errname.h>
 #include <linux/ethtool.h>
 #include <linux/firmware.h>
 #include <linux/jiffies.h>
+#include <linux/key-type.h>
+#include <linux/key.h>
 #include <linux/mdio.h>
+#include <linux/mempool.h>
 #include <linux/phy.h>
 #include <linux/refcount.h>
+#include <linux/scatterlist.h>
 #include <linux/sched.h>
 #include <linux/slab.h>
 #include <linux/wait.h>

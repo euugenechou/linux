@@ -237,3 +237,43 @@ struct request *rust_helper_blk_mq_rq_from_pdu(void *pdu)
 	return blk_mq_rq_from_pdu(pdu);
 }
 EXPORT_SYMBOL_GPL(rust_helper_blk_mq_rq_from_pdu);
+
+#include <linux/bio.h>
+
+void rust_helper_bio_set_dev(struct bio *bio, struct block_device *bdev)
+{
+	bio_set_dev(bio, bdev);
+}
+EXPORT_SYMBOL_GPL(rust_helper_bio_set_dev);
+
+void rust_helper_bio_get(struct bio *bio)
+{
+	bio_get(bio);
+}
+EXPORT_SYMBOL_GPL(rust_helper_bio_get);
+
+#include <linux/mempool.h>
+
+int rust_helper_mempool_init_page_pool(mempool_t *pool, unsigned min_nr, unsigned order)
+{
+	return mempool_init_page_pool(pool, min_nr, order);
+}
+EXPORT_SYMBOL_GPL(rust_helper_mempool_init_page_pool);
+
+mempool_t *rust_helper_mempool_create_page_pool(unsigned min_nr, unsigned order)
+{
+	return mempool_create_page_pool(min_nr, order);
+}
+EXPORT_SYMBOL_GPL(rust_helper_mempool_create_page_pool);
+
+int rust_helper_mempool_init_slab_pool(mempool_t *pool, unsigned min_nr, struct kmem_cache *kc)
+{
+	return mempool_init_slab_pool(pool, min_nr, kc);
+}
+EXPORT_SYMBOL_GPL(rust_helper_mempool_init_slab_pool);
+
+mempool_t *rust_helper_mempool_create_slab_pool(unsigned min_nr, struct kmem_cache *kc)
+{
+	return mempool_create_slab_pool(min_nr, kc);
+}
+EXPORT_SYMBOL_GPL(rust_helper_mempool_create_slab_pool);
